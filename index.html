@@ -3,126 +3,393 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopsy - Fashion Store</title>
+
+  <title>Shopsy — Premium Shopping</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="logo">SHOPSY</div>
+<header class="header">
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="logo">
+    SHOPSY
+  </div>
 
-  <button class="cart-btn" onclick="openCart()">
-    🛒 Cart (<span id="cartCount">0</span>)
+  <div class="search-box">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search for products, brands and more..."
+    >
+    <button onclick="searchProducts()">🔍</button>
+  </div>
+
+  <button class="cart-button" onclick="openCart()">
+    🛒 Cart <span id="cartCount">0</span>
   </button>
+
 </header>
 
-<section id="home" class="hero">
+
+<nav class="navbar">
+
+  <a href="#home">Home</a>
+  <a href="#categories">Categories</a>
+  <a href="#products">Products</a>
+  <a href="#offers">Offers</a>
+  <a href="#about">About</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <span class="badge">NEW COLLECTION</span>
+
+    <h1>
+      Style That<br>
+      <strong>Speaks For You.</strong>
+    </h1>
+
+    <p>
+      Premium clothes & shoes at prices you'll love.
+    </p>
+
+    <a href="#products" class="shop-button">
+      Shop Now →
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+  <div class="section-heading">
+
+    <span>EXPLORE</span>
+
+    <h2>Shop By Category</h2>
+
+  </div>
+
+
+  <div class="categories">
+
+    <a href="#products" class="category-card">
+      <div>👕</div>
+      <h3>Men's Fashion</h3>
+    </a>
+
+    <a href="#products" class="category-card">
+      <div>👗</div>
+      <h3>Women's Fashion</h3>
+    </a>
+
+    <a href="#products" class="category-card">
+      <div>👟</div>
+      <h3>Shoes</h3>
+    </a>
+
+    <a href="#products" class="category-card">
+      <div>🎒</div>
+      <h3>Accessories</h3>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- OFFER -->
+
+<section class="offer" id="offers">
+
   <div>
-    <h1>Style That Speaks</h1>
-    <p>Trendy Clothes & Shoes at Affordable Prices</p>
-    <a href="#products" class="shop-btn">Shop Now</a>
-  </div>
-</section>
 
-<section id="products" class="products-section">
-  <h2>Our Products</h2>
+    <span>LIMITED TIME OFFER</span>
 
-  <div class="products">
+    <h2>Premium Style.<br>Better Prices.</h2>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400?text=T-Shirt" alt="T-Shirt">
-      <h3>Premium T-Shirt</h3>
-      <p>₹499</p>
-      <button onclick="addToCart('Premium T-Shirt',499)">
-        Add to Cart
-      </button>
-    </div>
+    <p>Discover our latest collection today.</p>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400?text=Shirt" alt="Shirt">
-      <h3>Casual Shirt</h3>
-      <p>₹799</p>
-      <button onclick="addToCart('Casual Shirt',799)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400?text=Shoes" alt="Shoes">
-      <h3>Fashion Shoes</h3>
-      <p>₹1,299</p>
-      <button onclick="addToCart('Fashion Shoes',1299)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400?text=Jeans" alt="Jeans">
-      <h3>Classic Jeans</h3>
-      <p>₹999</p>
-      <button onclick="addToCart('Classic Jeans',999)">
-        Add to Cart
-      </button>
-    </div>
+    <a href="#products">
+      Explore Collection →
+    </a>
 
   </div>
+
 </section>
 
-<section id="about" class="about">
-  <h2>About Shopsy</h2>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+  <div class="section-heading">
+
+    <span>OUR COLLECTION</span>
+
+    <h2>Trending Products</h2>
+
+  </div>
+
+
+  <div class="products" id="productList">
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        👕
+        <span class="discount">20% OFF</span>
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-category">MEN'S FASHION</span>
+
+        <h3>Premium T-Shirt</h3>
+
+        <div class="rating">
+          ⭐ 4.5
+        </div>
+
+        <div class="price">
+
+          <strong>₹499</strong>
+
+          <del>₹699</del>
+
+        </div>
+
+        <button
+          class="add-button"
+          onclick="addToCart('Premium T-Shirt',499)"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        👟
+        <span class="discount">25% OFF</span>
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-category">FOOTWEAR</span>
+
+        <h3>Premium Sneakers</h3>
+
+        <div class="rating">
+          ⭐ 4.7
+        </div>
+
+        <div class="price">
+
+          <strong>₹999</strong>
+
+          <del>₹1,299</del>
+
+        </div>
+
+        <button
+          class="add-button"
+          onclick="addToCart('Premium Sneakers',999)"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        👔
+        <span class="discount">30% OFF</span>
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-category">MEN'S FASHION</span>
+
+        <h3>Classic Shirt</h3>
+
+        <div class="rating">
+          ⭐ 4.4
+        </div>
+
+        <div class="price">
+
+          <strong>₹699</strong>
+
+          <del>₹999</del>
+
+        </div>
+
+        <button
+          class="add-button"
+          onclick="addToCart('Classic Shirt',699)"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        👜
+        <span class="discount">15% OFF</span>
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-category">ACCESSORIES</span>
+
+        <h3>Premium Bag</h3>
+
+        <div class="rating">
+          ⭐ 4.6
+        </div>
+
+        <div class="price">
+
+          <strong>₹799</strong>
+
+          <del>₹949</del>
+
+        </div>
+
+        <button
+          class="add-button"
+          onclick="addToCart('Premium Bag',799)"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- WHY SHOPSY -->
+
+<section class="features">
+
+  <div class="feature">
+    <span>🚚</span>
+    <h3>Fast Delivery</h3>
+    <p>Quick and reliable delivery.</p>
+  </div>
+
+  <div class="feature">
+    <span>🔒</span>
+    <h3>Secure Shopping</h3>
+    <p>Your shopping experience matters.</p>
+  </div>
+
+  <div class="feature">
+    <span>💎</span>
+    <h3>Premium Quality</h3>
+    <p>Products selected with care.</p>
+  </div>
+
+  <div class="feature">
+    <span>📲</span>
+    <h3>Easy Ordering</h3>
+    <p>Order easily from your phone.</p>
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+  <span>ABOUT SHOPSY</span>
+
+  <h2>Simple shopping.<br>Better style.</h2>
+
   <p>
-    Shopsy is an online fashion store where you can discover
-    trendy clothes and shoes at affordable prices.
+    Shopsy brings stylish fashion and everyday products
+    together in one simple shopping experience.
   </p>
+
 </section>
 
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
 
-  <p>📞 Phone: +91 9876543210</p>
-  <p>📧 Email: shop@example.com</p>
+</main>
 
-  <a
-    href="https://wa.me/919876543210"
-    class="whatsapp"
-    target="_blank">
-    💬 Order on WhatsApp
-  </a>
-</section>
 
 <!-- CART -->
 
-<div id="cartModal" class="cart-modal">
+<div class="cart-modal" id="cartModal">
 
   <div class="cart-box">
 
-    <button class="close" onclick="closeCart()">✕</button>
+    <button class="close-cart" onclick="closeCart()">×</button>
 
     <h2>Your Cart</h2>
 
     <div id="cartItems"></div>
 
-    <h3>Total: ₹<span id="cartTotal">0</span></h3>
+    <div class="cart-total">
+      Total: ₹<span id="cartTotal">0</span>
+    </div>
 
-    <button class="order-btn" onclick="placeOrder()">
-      📦 Place Order
+    <button class="order-button" onclick="placeOrder()">
+      Order on WhatsApp →
     </button>
 
   </div>
 
 </div>
 
+
 <footer>
-  <p>© 2026 Shopsy. All Rights Reserved.</p>
+
+  <div class="footer-logo">
+    SHOPSY
+  </div>
+
+  <p>Premium shopping made simple.</p>
+
+  <p>© 2026 Shopsy. All rights reserved.</p>
+
 </footer>
+
 
 <script src="script.js"></script>
 
