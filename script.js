@@ -20,7 +20,7 @@ function updateCart() {
 
     if (cart.length === 0) {
         cartItems.innerHTML = "<p>आपका cart खाली है.</p>";
-        cartTotal.textContent = "₹0";
+        cartTotal.textContent = "0";
         return;
     }
 
@@ -45,7 +45,7 @@ function updateCart() {
         `;
     });
 
-    cartTotal.textContent = "₹" + total;
+    cartTotal.textContent = total;
 }
 
 function removeItem(index) {
@@ -68,53 +68,57 @@ function placeOrder() {
         return;
     }
 
-    let message = "🛍️ SHOPSY ORDER%0A%0A";
+    let message = "SHOPSY ORDER\n\n";
     let total = 0;
 
     cart.forEach((item, index) => {
-        message += `${index + 1}. ${item.name} - ₹${item.price}%0A`;
+        message += `${index + 1}. ${item.name} - ₹${item.price}\n`;
         total += item.price;
     });
 
-    message += `%0A💰 Total: ₹${total}`;
-    message += `%0A%0Aमैं यह order करना चाहता/चाहती हूँ।`;
+    message += `\nTotal: ₹${total}`;
+    message += "\n\nमैं यह order करना चाहता/चाहती हूँ।";
 
-    // अपना WhatsApp नंबर यहाँ डालें
     const phoneNumber = "919876543210";
 
     window.open(
-        "https://wa.me/" + phoneNumber + "?text=" + message,
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message),
         "_blank"
     );
 }
 
 
-// 🔎 Product Search
-const searchInput = document.getElementById("searchInput");
+// 🔎 SEARCH FUNCTION
+function searchProducts() {
+    const searchInput = document.getElementById("searchInput");
+    const searchText = searchInput.value.toLowerCase().trim();
 
-if (searchInput) {
-    searchInput.addEventListener("input", function () {
+    const products = document.querySelectorAll(".product-card");
 
-        const searchText = this.value.toLowerCase();
-        const products = document.querySelectorAll(".product-card");
+    products.forEach(product => {
+        const productText = product.textContent.toLowerCase();
 
-        products.forEach(product => {
-
-            const productText =
-                product.textContent.toLowerCase();
-
-            if (productText.includes(searchText)) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
-
-        });
+        if (productText.includes(searchText)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
     });
 }
 
 
-// बाहर click करने पर cart बंद
+// Search box में लिखते ही search
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+    searchInput.addEventListener("input", searchProducts);
+}
+
+
+// Cart के बाहर click करने पर बंद
 window.addEventListener("click", function(event) {
 
     const modal = document.getElementById("cartModal");
